@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ToDO -->
+     <div class="header">
+        <h1>Movie Explorer</h1>
+     </div>
+
+     <div class="search">
+        <input type="text" id="searchMovie" placeholder="Search for a movie...">
+        <select id="sortList">
+            <option value="default">Sort By</option>
+            <option value="releaseAsc">Release Date (Asc)</option>
+            <option value="releaseDesc">Release Date (Desc)</option>
+            <option value="ratingAsc">Rating (Asc)</option>
+            <option value="ratingDesc">Rating (Desc)</option>
+        </select>
+     </div>
+
+     <div id="movieList" class="movie-list">
+        <!-- Movie cards will be dynamically inserted here -->
+         
+     </div>
+    <script src="script.js"></script>
+</body>
+</html>
