@@ -3,10 +3,12 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(241, 239, 239);
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .header {
-    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(58, 65, 80);
     padding: 20px;
     color: #fff;
@@ -33,4 +35,37 @@ body {
 .search select {
     padding: 10px;
     border-radius: 5px;
+}
+
+#movieList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.movie {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    width: 225px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.movie h3 {
+    margin: 15px;
+}
+
+.movie p {
+    font-size: 13px;
+}
+
+.movie img {
+    width: 170px;
+    height: 250px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
 }
