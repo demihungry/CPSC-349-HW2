@@ -21,7 +21,8 @@ async function fetchMovies(page=1) {
         }
         totalPages = Math.min(data.total_pages, 48963);
         currentMovies = data.results;
-        renderMovies(currentMovies);
+        const sortedMovies = sortMovies(currentMovies);
+        renderMovies(sortedMovies);
         const pageInfo = document.getElementById("pageInfo");
         pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
     } catch (error) {
@@ -66,6 +67,26 @@ searchInput.addEventListener("input", () => {
     currentPage = 1;
     fetchMovies(currentPage);
 });
+
+const sortSelect = document.getElementById("sortMovies");
+sortSelect.addEventListener("change", () => {
+    const sortedMovies = sortMovies(currentMovies);
+    renderMovies(sortedMovies);
+});
+
+function sortMovies(movies) {
+    const sorted = [...movies];
+    if (sortSelect.value === "releaseAsc") {
+        sorted.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+    } else if (sortSelect.value === "releaseDesc") {
+        sorted.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    } else if (sortSelect.value === "ratingAsc") {
+        sorted.sort((a, b) => a.vote_average - b.vote_average);
+    } else if (sortSelect.value === "ratingDesc") {
+        sorted.sort((a, b) => b.vote_average - a.vote_average);
+    }
+    return sorted;
+}
 
 fetchMovies(currentPage);
 
