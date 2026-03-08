@@ -69,3 +69,22 @@ body {
     text-align: center;
     margin-top: 10px;
 }
+
+.pages {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px auto;
+    padding: 10px;
+    align-items: center;
+}
+
+.pages button {
+    padding: 10px 15px; /* padding: 10px top/bottom, 20px left/right */
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(108, 162, 197);
+    color: #fff;
+    cursor: pointer;
+}
