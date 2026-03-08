@@ -1,9 +1,28 @@
 # Movie Explorer
 
-This website uses API from TMDB(https://www.themoviedb.org/?language=en-US).
+A simple website to explore and search movies using the [TMDB API](https://www.themoviedb.org/?language=en-US).
 
 ## Description
-The Purpose of this project is for users to explore, search, and sort movies based on rating or releasing date. 
+This project lets users explore, search, and sort movies based on rating or release date. 
+
+## Features
+- Search movies by title
+- Sort by rating (ascending/descending)
+- Sort by release date (ascending/descending)
+- Pagination through results
+- Display movie poster, title, release date, and rating
 
 ## How to Use
-1. Go to link: https://demihungry.github.io/CPSC-349-HW2/
+**Live Site:** https://demihungry.github.io/CPSC-349-HW2/
+
+**Run Locally:**
+1. Download or clone this project
+2. Open `index.html` in your browser
+
+## Technologies Used
+- HTML, CSS, JavaScript
+- TMDB API
+
+---
+*This product uses the TMDB API but is not endorsed or certified by TMDB.*
+
