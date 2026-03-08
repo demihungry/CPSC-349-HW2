@@ -4,19 +4,24 @@ const api_url = "https://api.themoviedb.org/3/movie/popular?api_key=" + api_key;
 let currentPage = 1;
 let totalPages = 1;
 let currentMovies = [];
+let searchQuery = "";
 
 async function fetchMovies(page=1) {
     try {
+        let data;
         currentPage = page;
-        const url = api_url + "&page=" + page;
-        const response = await fetch(url);
-        const data = await response.json();
-        if (totalPages === 1) {
-            totalPages = Math.min(data.total_pages, 48963);
+        if (searchQuery) {
+            const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${encodeURIComponent(searchQuery)}&page=${page}`;
+            const searchResponse = await fetch(searchUrl);
+            data = await searchResponse.json();
+        } else {
+            const url = api_url + "&page=" + page;
+            const response = await fetch(url);
+            data = await response.json();
         }
-        const movies = data.results;
-        currentMovies = movies;
-        renderMovies(movies);
+        totalPages = Math.min(data.total_pages, 48963);
+        currentMovies = data.results;
+        renderMovies(currentMovies);
         const pageInfo = document.getElementById("pageInfo");
         pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
     } catch (error) {
@@ -40,7 +45,6 @@ function renderMovies(movies) {
     });
 }
 
-
 const prev = document.getElementById("prevBtn");
 const next = document.getElementById("nextBtn");
 prev.addEventListener("click", () => {
@@ -54,6 +58,13 @@ next.addEventListener("click", () => {
         currentPage++;
         fetchMovies(currentPage);
     }
+});
+
+const searchInput = document.getElementById("searchMovie");
+searchInput.addEventListener("input", () => {
+    searchQuery = searchInput.value.trim();
+    currentPage = 1;
+    fetchMovies(currentPage);
 });
 
 fetchMovies(currentPage);
